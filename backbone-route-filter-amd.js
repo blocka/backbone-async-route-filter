@@ -52,6 +52,8 @@ define(['backbone'], function(Backbone){
                 var afterStackClone = _.clone(afterStack);
 
                 function next(stack, runRoute) {
+                    if (location.hash.replace('#','') != fragment) return;
+
                     var layer = stack.shift();
                     if(layer) {
                         var filter = _.isRegExp(layer.filter) ? layer.filter : router._routeToRegExp(layer.filter);
